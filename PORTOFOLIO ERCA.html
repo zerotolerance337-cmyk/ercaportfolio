@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erca Supinho | Profissional Multifacetada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblue: '#1a365d',
+                        royalpurple: '#4c1d95',
+                        radiantgold: '#eab308',
+                        vibrantturquoise: '#0d9488',
+                        vividorange: '#ea580c'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        raleway: ['Raleway', 'sans-serif']
+                    },
+                    animation: {
+                        'arrow-pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a365d 0%, #4c1d95 100%);
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at 10% 20%, rgba(26, 54, 93, 0.8) 0%, rgba(76, 29, 149, 0.6) 100%);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #eab308 0%, #ea580c 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(to bottom, #eab308, #0d9488);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #eab308;
+            border-radius: 50%;
+            border: 4px solid #0d9488;
+        }
+        
+        .timeline-left::before {
+            left: calc(50% - 42px);
+        }
+        
+        .timeline-right::before {
+            right: calc(50% - 42px);
+        }
+        
+        .skill-card {
+            transition: all 0.4s ease;
+            perspective: 1000px;
+        }
+        
+        .skill-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .skill-card:hover .skill-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .skill-front, .skill-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .skill-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #eab308 0%, #ea580c 100%);
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .arrow-down {
+            animation: arrow-pulse 2s infinite;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item::before {
+                left: 21px;
+            }
+            
+            .timeline-left, .timeline-right {
+                margin-left: 60px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-deepblue bg-opacity-90 backdrop-blur-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-radiantgold font-raleway">ERCA SUPINHO</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-white hover:text-radiantgold transition">Sobre Mim</a>
+                <a href="#academic" class="text-white hover:text-radiantgold transition">Formação</a>
+                <a href="#experience" class="text-white hover:text-radiantgold transition">Experiência</a>
+                <a href="#skills" class="text-white hover:text-radiantgold transition">Habilidades</a>
+                <a href="#contact" class="text-white hover:text-radiantgold transition">Contacto</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 font-raleway">
+                    <span class="text-white">Erca Adelaide do</span><br>
+                    <span class="text-radiantgold">Rosário Supinho</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-vibrantturquoise mb-8 italic">
+                    "Guiada por objetivos claros, conectando dados, pessoas e soluções com precisão e empatia."
+                </p>
+                <a href="#about" class="bg-radiantgold hover:bg-yellow-600 text-deepblue font-bold py-3 px-8 rounded-full text-lg transform transition hover:scale-105 shadow-lg shadow-yellow-500/30">
+                    Conheça minha jornada
+                </a>
+                <div class="mt-20 arrow-down">
+                    <i class="fas fa-chevron-down text-white text-3xl"></i>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-radiantgold to-vividorange rounded-full filter blur-2xl opacity-30 animate-pulse"></div>
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 bg-gray-200 border-4 border-white rounded-full overflow-hidden shadow-2xl floating">
+                        <div class="bg-gray-300 border-2 border-dashed rounded-xl w-full h-full" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mim -->
+    <section id="about" class="py-20 bg-royalpurple bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title">
+                <span class="text-radiantgold">Sobre</span> <span class="text-white">Mim</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg mb-6">
+                    Sou uma profissional moçambicana nascida em 26 de novembro de 1995, natural da Beira, com sólida formação e experiência em Digitação de Dados, Ação Social e Administração.
+                </p>
+                <p class="text-lg mb-6">
+                    Minha trajetória profissional é marcada por um compromisso inabalável com a excelência, combinando habilidades técnicas com uma profunda compreensão das necessidades humanas. Minha formação diversificada e experiências práticas me permitiram desenvolver uma abordagem única para resolver problemas complexos.
+                </p>
+                <p class="text-lg mb-6">
+                    Acredito firmemente que a responsabilidade, adaptabilidade e comunicação eficaz são pilares essenciais para o sucesso em qualquer área. Minha capacidade de organização e trabalho sob pressão me permite enfrentar desafios com confiança e determinação.
+                </p>
+                <p class="text-lg">
+                    Estou sempre aberta a novas oportunidades que me permitam aplicar minha experiência multidisciplinar, contribuindo para projetos significativos e criando conexões valiosas entre dados, pessoas e soluções inovadoras.
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                    <div class="bg-deepblue p-4 rounded-lg text-center">
+                        <i class="fas fa-bullseye text-radiantgold text-3xl mb-2"></i>
+                        <h3 class="text-white font-semibold">Foco</h3>
+                    </div>
+                    <div class="bg-deepblue p-4 rounded-lg text-center">
+                        <i class="fas fa-people-arrows text-vibrantturquoise text-3xl mb-2"></i>
+                        <h3 class="text-white font-semibold">Empatia</h3>
+                    </div>
+                    <div class="bg-deepblue p-4 rounded-lg text-center">
+                        <i class="fas fa-lightbulb text-vividorange text-3xl mb-2"></i>
+                        <h3 class="text-white font-semibold">Inovação</h3>
+                    </div>
+                    <div class="bg-deepblue p-4 rounded-lg text-center">
+                        <i class="fas fa-hands-helping text-radiantgold text-3xl mb-2"></i>
+                        <h3 class="text-white font-semibold">Compromisso</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formação Acadêmica -->
+    <section id="academic" class="py-20 bg-deepblue">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center section-title">
+                <span class="text-white">Formação</span> <span class="text-radiantgold">Acadêmica</span>
+            </h2>
+            
+            <div class="timeline relative">
+                <div class="timeline-item timeline-left pl-0 md:pl-0 md:pr-1/2 md:pr-8 pb-10">
+                    <div class="bg-royalpurple bg-opacity-30 p-6 rounded-2xl">
+                        <div class="text-radiantgold font-bold">2023</div>
+                        <h3 class="text-xl font-bold text-white mt-2">Curso Técnico Profissional de HST</h3>
+                        <p class="mt-2 text-gray-200">Formação especializada em Higiene e Segurança no Trabalho</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right pl-0 md:pl-1/2 md:pl-8 pb-10">
+                    <div class="bg-royalpurple bg-opacity-30 p-6 rounded-2xl">
+                        <div class="text-radiantgold font-bold">2019</div>
+                        <h3 class="text-xl font-bold text-white mt-2">Curso Técnico Profissional de Ação Social Nível 3</h3>
+                        <p class="mt-2 text-gray-200">Formação avançada em intervenção social e comunitária</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left pl-0 md:pl-0 md:pr-1/2 md:pr-8 pb-10">
+                    <div class="bg-royalpurple bg-opacity-30 p-6 rounded-2xl">
+                        <div class="text-radiantgold font-bold">2018</div>
+                        <h3 class="text-xl font-bold text-white mt-2">Curso Técnico Profissional de Secretariado Administração</h3>
+                        <p class="mt-2 text-gray-200">Especialização em gestão administrativa e organizacional</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right pl-0 md:pl-1/2 md:pl-8 pb-10">
+                    <div class="bg-royalpurple bg-opacity-30 p-6 rounded-2xl">
+                        <div class="text-radiantgold font-bold">2016 - 2019</div>
+                        <h3 class="text-xl font-bold text-white mt-2">Licenciatura parcial em Ciências Sociais - Ação Social</h3>
+                        <p class="mt-2 text-gray-200">Formação superior com foco em desenvolvimento social</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left pl-0 md:pl-0 md:pr-1/2 md:pr-8">
+                    <div class="bg-royalpurple bg-opacity-30 p-6 rounded-2xl">
+                        <div class="text-radiantgold font-bold">Complementares</div>
+                        <h3 class="text-xl font-bold text-white mt-2">Cursos em Informática e Administração</h3>
+                        <p class="mt-2 text-gray-200">Formação complementar em tecnologia e gestão</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiência Profissional -->
+    <section id="experience" class="py-20 bg-royalpurple bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center section-title">
+                <span class="text-radiantgold">Experiência</span> <span class="text-white">Profissional</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-deepblue rounded-2xl overflow-hidden shadow-xl transform transition hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-start">
+                            <div class="bg-radiantgold p-3 rounded-lg mr-4">
+                                <i class="fas fa-keyboard text-deepblue text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Digitadora de Dados</h3>
+                                <p class="text-radiantgold">2021-2022 | ABT</p>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-vibrantturquoise mt-1 mr-2"></i>
+                                <span>Gestão de base de dados e sistemas de informação</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-vibrantturquoise mt-1 mr-2"></i>
+                                <span>Elaboração de relatórios e análises estatísticas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-vibrantturquoise mt-1 mr-2"></i>
+                                <span>Organização e digitalização de processos documentais</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-deepblue rounded-2xl overflow-hidden shadow-xl transform transition hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-start">
+                            <div class="bg-vibrantturquoise p-3 rounded-lg mr-4">
+                                <i class="fas fa-hands-helping text-deepblue text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Assistente Social</h3>
+                                <p class="text-vibrantturquoise">2020-2021 | TDH</p>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-radiantgold mt-1 mr-2"></i>
+                                <span>Atuação direta em campo com comunidades vulneráveis</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-radiantgold mt-1 mr-2"></i>
+                                <span>Realização de inquéritos sociais e diagnósticos comunitários</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-radiantgold mt-1 mr-2"></i>
+                                <span>Apoio psicossocial a crianças e famílias em situação de risco</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habilidades e Competências -->
+    <section id="skills" class="py-20 bg-deepblue">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center section-title">
+                <span class="text-white">Habilidades</span> <span class="text-radiantgold">e Competências</span>
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="skill-card">
+                    <div class="skill-inner">
+                        <div class="skill-front bg-royalpurple bg-opacity-30 rounded-xl p-6">
+                            <i class="fas fa-laptop-code text-vibrantturquoise text-4xl mb-4"></i>
+                            <h3 class="text-white font-bold">Informática Avançada</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p class="text-deepblue font-semibold">Domínio de ferramentas de escritório, sistemas de informação e gestão de dados</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-inner">
+                        <div class="skill-front bg-royalpurple bg-opacity-30 rounded-xl p-6">
+                            <i class="fas fa-users text-radiantgold text-4xl mb-4"></i>
+                            <h3 class="text-white font-bold">Relações Públicas</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p class="text-deepblue font-semibold">Habilidade em construir e manter relacionamentos profissionais eficazes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-inner">
+                        <div class="skill-front bg-royalpurple bg-opacity-30 rou
